@@ -6,9 +6,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    components: {
-    },
-    setup() {
-    },
+  components: {},
+  setup() {},
 })
 </script>
