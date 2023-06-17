@@ -2,6 +2,9 @@
   <Header />
 
   <body>
+    <div class="my_page">
+      <h1>投稿した句</h1>
+    </div>
     <div class="container">
       <!--「上の句」の画像を貼るところ-->
       <div class="kaminoku_itiran_png">
@@ -49,16 +52,24 @@
 
   </body>
 </template>
- 
+
 <script setup lang="ts">
 import Header from '../components/Header.vue'
 import Card from '../components/Card.vue'
 import TankaCard from '../components/TankaCard.vue'
 </script>
- 
+
 
 <style scoped>
-.cards {
+.my_page h1 {
+  font-weight: normal;
+  font-family: "UDデジタル教科書体", "游教科書体";
+  width: 80%;
+  margin: 20px auto;
+  border-bottom: 1px solid rgb(0 0 0 / 12%);
+}
+
+.container .cards {
   display: grid;
   /* グリッドレイアウト */
   place-content: center;
@@ -96,10 +107,10 @@ import TankaCard from '../components/TankaCard.vue'
 }
 
 .kaminoku_itiran_png img {
-  width: 180px;
+  width: 170px;
 }
 
 .sakuhin_itiran_png img {
-  width: 170px;
+  width: 160px;
 }
 </style>

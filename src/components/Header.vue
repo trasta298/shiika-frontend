@@ -15,7 +15,7 @@
   display: flex;
   height: 60px;
   align-items: center;
-  background-color: #c2d9ff;
+  background-color: #eceff4;
 }
 
 .title {
