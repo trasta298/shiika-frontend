@@ -1,34 +1,55 @@
 <template>
-  <div>
-    <label for="username">ユーザー名</label>
-    <input type="text" id="username" name="username" />
+  <Header />
+  <div class="Container">
+    <form class="LoginForm" @submit="onSubmit">
+      <input class="LoginInput" v-model="username" type="text" placeholder="username">
+      <input class="LoginInput" v-model="password" type="password" placeholder="password">
+      <button class="LoginButton">login</button>
+    </form>
   </div>
-
-  <div class="password_box">
-    <label for="pass">パスワード (8文字以上)</label>
-    <input type="password" id="pass" name="password" minlength="8" required />
-  </div>
-
-  <input type="submit" value="Sign in" />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue';
+import Header from '../components/Header.vue'
+import apis, { Login } from '../lib/apis'
 
-export default defineComponent({
-  components: {},
-  setup() {},
-})
+const username = ref('')
+const password = ref('')
+
+const onSubmit = async (e: Event) => {
+  console.log('submit')
+  e.preventDefault()
+  try {
+    const req: Login = {
+      userid: username.value,
+      password: password.value,
+    }
+    const res = await apis.postLogin(req)
+    console.log(res)
+  } catch (e) {
+  }
+}
 </script>
 
 <style scoped>
-label {
-  display: block;
-  font: 0.9rem helvetica, 'Fira Sans', sans-serif;
+.Container {
+  max-width: 1024px;
+  margin: 20px auto;
+}
+.LoginForm {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
-input[type='submit'],
-label {
-  margin-top: 1rem;
+.LoginInput {
+  width: 200px;
+  margin: 10px;
+}
+
+.LoginButton {
+  width: 200px;
+  margin: 10px;
 }
 </style>
