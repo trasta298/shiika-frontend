@@ -24,8 +24,6 @@
       </div>
 
       <div class="cards">
-        <TankaCard first="ちはやぶる" second="神代も聞かず" third="竜田川" fourth="から紅に" fifth="水くくるとは"></TankaCard>
-        <TankaCard first="秋の田の" second="かりほの庵の" third="苫をあらみ" fourth="わが衣手は" fifth="露にぬれつつ"></TankaCard>
         <TankaCard v-for="tanka in tankas" :first="tanka.kaminoku.content.first" :second="tanka.kaminoku.content.second"
           :third="tanka.kaminoku.content.third" :fourth="tanka.simonoku.content.fourth"
           :fifth="tanka.simonoku.content.fifth" :key="tanka.simonoku.id"></TankaCard>
