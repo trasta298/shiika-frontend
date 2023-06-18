@@ -38,6 +38,8 @@ const onSubmit = async (e: Event) => {
   max-width: 800px;
   margin: 20px auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .RegisterForm {
