@@ -17,7 +17,9 @@
 import { ref } from 'vue';
 import Header from '../components/Header.vue'
 import apis, { Login } from '../lib/apis'
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const username = ref('')
 const password = ref('')
 
@@ -31,6 +33,7 @@ const onSubmit = async (e: Event) => {
     }
     const res = await apis.postLogin(req, { withCredentials: true })
     console.log(res)
+    router.push('/')
   } catch (e) {
   }
 }

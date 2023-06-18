@@ -16,16 +16,19 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import Axios from 'axios';
 import apis from '../lib/apis';
 
 const router = useRouter()
 
 const onClick = async (path: string) => {
   try {
-    await apis.userKaminokuGet({ withCredentials: true })
+    const res = await apis.userKaminokuGet({ withCredentials: true })
+    console.log(res)
     router.push(path)
   } catch (e) {
-    router.push('/login')
+    if (Axios.isAxiosError(e) && e.response && e.response.status === 404) router.push(path)
+    else router.push('/login')
   }
 }
 </script>
