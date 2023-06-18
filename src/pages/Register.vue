@@ -4,7 +4,7 @@
         <form class="RegisterForm" @submit="onSubmit">
             <input class="RegisterInput" v-model="username" type="text" placeholder="username">
             <input class="RegisterInput" v-model="password" type="password" placeholder="password">
-            <button class="RegisterButton">Register</button>
+            <button class="RegisterButton">新規登録</button>
         </form>
     </div>
 </template>
@@ -33,25 +33,50 @@ const onSubmit = async (e: Event) => {
 </script>
   
 <style scoped>
+
 .Container {
-    max-width: 800px;
-    margin: 20px auto;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
 }
 
 .RegisterForm {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 2rem;
+  margin: 100px 0 30px;
 }
 
 .RegisterInput {
-    width: 200px;
-    margin: 10px;
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  outline: none;
+  font-size: 1.1rem;
 }
 
 .RegisterButton {
-    width: 200px;
-    margin: 10px;
+  width: 220px;
+  margin: 20px auto;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background: #5C7AEA;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.RegisterButton:hover {
+  background: #6a8af1;
 }
 </style>
   
