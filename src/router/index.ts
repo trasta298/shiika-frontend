@@ -5,6 +5,7 @@ const Login = () => import('../pages/Login.vue')
 const Register = () => import('../pages/Register.vue')
 const User = () => import('../pages/User.vue')
 const Kaminoku = () => import('../pages/Kaminoku.vue')
+const Post = () => import('../pages/Post.vue')
 
 const routes: RouteRecordRaw[] = [
   {
@@ -27,6 +28,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/kaminoku',
     component: Kaminoku,
+  },
+  {
+    path: '/post',
+    component: Post,
   },
 ]
 

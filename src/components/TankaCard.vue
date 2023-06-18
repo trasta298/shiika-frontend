@@ -70,7 +70,6 @@ defineProps({
 .line {
   font-size: 16px;
   writing-mode: vertical-rl;
-  font-family: "UDデジタル教科書体", "游教科書体";
   text-align: left;
   margin-top: 20px;
 }

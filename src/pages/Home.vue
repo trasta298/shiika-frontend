@@ -56,9 +56,9 @@ import Card from '../components/Card.vue'
 import TankaCard from '../components/TankaCard.vue'
 import { ref, watchEffect } from 'vue';
 
-import apis, { ResponseKaminoku } from '../lib/apis'
+import apis, { Kaminoku } from '../lib/apis'
 
-const kaminokus = ref<ResponseKaminoku[]>([])
+const kaminokus = ref<Kaminoku[]>([])
 
 watchEffect(async() => {
   const res = await apis.getKaminoku()
@@ -97,7 +97,6 @@ watchEffect(async() => {
   width: 100px;
   text-align: center;
   font-size: 15px;
-  font-family: "UDデジタル教科書体", "游教科書体";
   color: #fff;
   padding: 1px 2px;
   background-color: #A1B1CA;

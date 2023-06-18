@@ -75,7 +75,6 @@ import Card from '../components/Card.vue'
     width: 100px;
     text-align: center;
     font-size: 15px;
-    font-family: "UDデジタル教科書体", "游教科書体";
     color: #fff;
     padding: 1px 2px;
     background-color: #A1B1CA;

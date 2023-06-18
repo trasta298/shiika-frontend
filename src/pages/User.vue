@@ -63,7 +63,6 @@ import TankaCard from '../components/TankaCard.vue'
 <style scoped>
 .my_page h1 {
   font-weight: normal;
-  font-family: "UDデジタル教科書体", "游教科書体";
   width: 80%;
   margin: 20px auto;
   border-bottom: 1px solid rgb(0 0 0 / 12%);
@@ -98,7 +97,6 @@ import TankaCard from '../components/TankaCard.vue'
   width: 100px;
   text-align: center;
   font-size: 15px;
-  font-family: "UDデジタル教科書体", "游教科書体";
   color: #fff;
   padding: 1px 2px;
   background-color: #A1B1CA;

@@ -25,7 +25,7 @@ const onSubmit = async (e: Event) => {
             userid: username.value,
             password: password.value,
         }
-        const res = await apis.postRegister(req)
+        const res = await apis.postRegister(req, { withCredentials: true })
         console.log(res)
     } catch (e) {
     }
