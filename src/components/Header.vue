@@ -1,6 +1,10 @@
 <template>
   <div class="HeaderContainer">
-    <div class="title">Shiika</div>
+    <div class="title">
+      <router-link to="/">
+        <img class="logo-picture" alt="Shiika" src="./../assets/Shiikai_logo8.png">
+      </router-link>
+    </div>
     <div class="HeaderButton">
       <router-link to="/login">ログイン</router-link>
     </div>
@@ -17,11 +21,9 @@
   align-items: center;
   background-color: #eceff4;
 }
-
-.title {
-  font-size: 40px;
-  font-family: 'Acme', sans-serif;
-  margin-top: 5px;
+.logo-picture {
+  width:80px;
+  justify-content: center;
   margin-left: 30px;
 }
 
