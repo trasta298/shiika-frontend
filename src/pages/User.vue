@@ -13,16 +13,8 @@
 
       <div class="cards"> <!-- コンテナ -->
         <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-
+        <Card v-for="kaminoku in userKaminokus" :first="kaminoku.content.first" :second="kaminoku.content.second"
+          :third="kaminoku.content.third" :key="kaminoku.id"></Card>
       </div>
       <div class="parent_of_more_info_button"> <!--クリックされたらさらに俳句を表示する-->
         <div class="more_info_button" v-on:click="">↓さらに表示</div>
@@ -37,12 +29,9 @@
 
       <div class="cards">
         <TankaCard first="ちはやぶる" second="神代も聞かず" third="竜田川" fourth="から紅に" fifth="水くくるとは"></TankaCard>
-        <TankaCard first="秋の田の" second="かりほの庵の" third="苫をあらみ" fourth="わが衣手は" fifth="露にぬれつつ"></TankaCard>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
+        <TankaCard v-for="tanka in userTankas" :first="tanka.kaminoku.content.first" :second="tanka.kaminoku.content.second"
+          :third="tanka.kaminoku.content.third" :fourth="tanka.simonoku.content.fourth"
+          :fifth="tanka.simonoku.content.fifth" :key="tanka.simonoku.id"></TankaCard>
       </div>
 
       <div class="parent_of_more_info_button"> <!--クリックされたらさらに俳句を表示する-->
@@ -57,6 +46,19 @@
 import Header from '../components/Header.vue'
 import Card from '../components/Card.vue'
 import TankaCard from '../components/TankaCard.vue'
+import apis, { Kaminoku, Tanka } from '../lib/apis'
+import { ref, watchEffect } from 'vue';
+
+const userKaminokus = ref<Kaminoku[]>([])
+const userTankas = ref<Tanka[]>([])
+
+watchEffect(async () => {
+  const res = await apis.userKaminokuGet({withCredentials: true})
+  userKaminokus.value = res.data
+  const res2 = await apis.userSimonokuGet({withCredentials: true})
+  userTankas.value = res2.data
+})
+
 </script>
 
 

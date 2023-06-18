@@ -54,7 +54,7 @@ watchEffect(async () => {
   const res = await apis.getKaminoku({ withCredentials: true })
   kaminokus.value = res.data
   const res2 = await apis.simonokuGet({ withCredentials: true })
-  tankas.value = res2.data
+  if (res2.data != null) tankas.value = res2.data
 })
 </script>
  
