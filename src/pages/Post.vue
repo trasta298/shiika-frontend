@@ -17,7 +17,7 @@ const onClick = () => {
         third: third.value
       }
     }
-    const res = apis.postKaminoku(req)
+    const res = apis.postKaminoku(req, { withCredentials: true })
     console.log(res)
   } catch (e) {
     console.log(e)
