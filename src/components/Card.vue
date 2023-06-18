@@ -41,24 +41,24 @@ defineProps({
   position: relative;
   height: 100%;
   width: 100%;
-  border: solid 5px #A78F6B;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+  border: solid 4px #A78F6B;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
   /*アニメーションの設定*/
   transition: all .3s;
 }
 
 .frame:hover {
   top: -3px;
-  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, .5);
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .2);
   cursor: pointer;
 
 }
 
 .line {
-  font-size: 25px;
+  font-size: 20px;
   writing-mode: vertical-rl;
   font-family: "UDデジタル教科書体", "游教科書体";
   text-align: left;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 </style>

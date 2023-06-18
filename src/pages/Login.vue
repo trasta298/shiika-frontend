@@ -34,9 +34,10 @@ const onSubmit = async (e: Event) => {
 
 <style scoped>
 .Container {
-  max-width: 1024px;
+  max-width: 800px;
   margin: 20px auto;
 }
+
 .LoginForm {
   display: flex;
   flex-flow: column;

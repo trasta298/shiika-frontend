@@ -85,7 +85,7 @@ import TankaCard from '../components/TankaCard.vue'
   justify-items: center;
   place-items: center;
   margin: 30px auto;
-  max-width: 1024px;
+  max-width: 800px;
 }
 
 .parent_of_more_info_button {

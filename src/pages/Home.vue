@@ -54,6 +54,16 @@
 import Header from '../components/Header.vue'
 import Card from '../components/Card.vue'
 import TankaCard from '../components/TankaCard.vue'
+import { ref, watchEffect } from 'vue';
+
+import apis, { ResponseKaminoku } from '../lib/apis'
+
+const kaminokus = ref<ResponseKaminoku[]>([])
+
+watchEffect(async() => {
+  const res = await apis.getKaminoku()
+  kaminokus.value = res.data
+})
 </script>
  
 
@@ -63,9 +73,9 @@ import TankaCard from '../components/TankaCard.vue'
   /* グリッドレイアウト */
   place-content: center;
   /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
-  grid-auto-rows: 225px;
-  grid-template-columns: repeat(auto-fill, 150px);
-  gap: 25px;
+  grid-auto-rows: 180px;
+  grid-template-columns: repeat(auto-fill, 120px);
+  gap: 20px;
   margin-top: 20px;
 }
 
@@ -74,7 +84,7 @@ import TankaCard from '../components/TankaCard.vue'
   justify-items: center;
   place-items: center;
   margin: 30px auto;
-  max-width: 1024px;
+  max-width: 800px;
 }
 
 .parent_of_more_info_button {
