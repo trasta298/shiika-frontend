@@ -1,45 +1,38 @@
 <template>
   <Header />
 
-  <body>
-    <div class="my_page">
-      <h1>投稿した句</h1>
+  <div class="container">
+    <div class="UserTitle">自分の投稿した句一覧</div>
+    <!--「上の句」の画像を貼るところ-->
+    <div class="kaminoku_itiran_png">
+      <img class="fit-picture" alt="上の句 一覧" src="./../assets/kaminoku_ichiran.png">
     </div>
-    <div class="container">
-      <!--「上の句」の画像を貼るところ-->
-      <div class="kaminoku_itiran_png">
-        <img class="fit-picture" alt="上の句 一覧" src="./../assets/kaminoku_ichiran.png">
-      </div>
 
-      <div class="cards"> <!-- コンテナ -->
-        <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
-        <Card v-for="kaminoku in userKaminokus" :first="kaminoku.content.first" :second="kaminoku.content.second"
-          :third="kaminoku.content.third" :key="kaminoku.id"></Card>
-      </div>
-      <div class="parent_of_more_info_button"> <!--クリックされたらさらに俳句を表示する-->
+    <div class="cards"> <!-- コンテナ -->
+      <Card first="あいうえお" second="かきくけこここ" third="さしすせそ"></Card>
+      <Card v-for="kaminoku in userKaminokus" :first="kaminoku.content.first" :second="kaminoku.content.second"
+        :third="kaminoku.content.third" :key="kaminoku.id"></Card>
+    </div>
+    <!-- <div class="parent_of_more_info_button">
         <div class="more_info_button" v-on:click="">↓さらに表示</div>
-      </div>
+      </div> -->
+
+    <!--「作品」の画像を貼るところ-->
+    <div class="sakuhin_itiran_png">
+      <img class="fit-picture" alt="作品一覧" src="./../assets/sakuhin_ichiran.png">
     </div>
 
-    <div class="container">
-      <!--「作品」の画像を貼るところ-->
-      <div class="sakuhin_itiran_png">
-        <img class="fit-picture" alt="作品一覧" src="./../assets/sakuhin_ichiran.png">
-      </div>
+    <div class="cards">
+      <TankaCard first="ちはやぶる" second="神代も聞かず" third="竜田川" fourth="から紅に" fifth="水くくるとは"></TankaCard>
+      <TankaCard v-for="tanka in userTankas" :first="tanka.kaminoku.content.first" :second="tanka.kaminoku.content.second"
+        :third="tanka.kaminoku.content.third" :fourth="tanka.simonoku.content.fourth"
+        :fifth="tanka.simonoku.content.fifth" :key="tanka.simonoku.id"></TankaCard>
+    </div>
 
-      <div class="cards">
-        <TankaCard first="ちはやぶる" second="神代も聞かず" third="竜田川" fourth="から紅に" fifth="水くくるとは"></TankaCard>
-        <TankaCard v-for="tanka in userTankas" :first="tanka.kaminoku.content.first" :second="tanka.kaminoku.content.second"
-          :third="tanka.kaminoku.content.third" :fourth="tanka.simonoku.content.fourth"
-          :fifth="tanka.simonoku.content.fifth" :key="tanka.simonoku.id"></TankaCard>
-      </div>
-
-      <div class="parent_of_more_info_button"> <!--クリックされたらさらに俳句を表示する-->
+    <!-- <div class="parent_of_more_info_button"> 
         <div class="more_info_button" v-on:click="">↓さらに表示</div>
-      </div>
-    </div>
-
-  </body>
+      </div> -->
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -53,9 +46,9 @@ const userKaminokus = ref<Kaminoku[]>([])
 const userTankas = ref<Tanka[]>([])
 
 watchEffect(async () => {
-  const res = await apis.userKaminokuGet({withCredentials: true})
+  const res = await apis.userKaminokuGet({ withCredentials: true })
   userKaminokus.value = res.data
-  const res2 = await apis.userSimonokuGet({withCredentials: true})
+  const res2 = await apis.userSimonokuGet({ withCredentials: true })
   userTankas.value = res2.data
 })
 
@@ -63,11 +56,10 @@ watchEffect(async () => {
 
 
 <style scoped>
-.my_page h1 {
-  font-weight: normal;
-  width: 80%;
-  margin: 20px auto;
-  border-bottom: 1px solid rgb(0 0 0 / 12%);
+.UserTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .container .cards {
@@ -85,7 +77,7 @@ watchEffect(async () => {
   height: 70%;
   justify-items: center;
   place-items: center;
-  margin: 30px auto;
+  margin: 50px auto;
   max-width: 800px;
 }
 
@@ -108,9 +100,11 @@ watchEffect(async () => {
 
 .kaminoku_itiran_png img {
   width: 170px;
+  margin-top: 20px;
 }
 
 .sakuhin_itiran_png img {
   width: 160px;
+  margin: 70px auto 0;
 }
 </style>
