@@ -10,7 +10,7 @@
 
       <div class="cards"> <!-- コンテナ -->
         <Card v-for="kaminoku in kaminokus" :first="kaminoku.content.first" :second="kaminoku.content.second"
-          :third="kaminoku.content.third" :key="kaminoku.id"></Card>
+          :third="kaminoku.content.third" :id="kaminoku.id" :key="kaminoku.id"></Card>
       </div>
       <!-- <div class="parent_of_more_info_button"> 
         <div class="more_info_button" v-on:click="">↓さらに表示</div>

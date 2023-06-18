@@ -2,7 +2,9 @@
 上の句一覧で表示する -->
 
 <script setup lang="ts">
-defineProps({
+import { useRouter } from 'vue-router';
+
+const props = defineProps({
   first: {
     type: String,
     required: true
@@ -15,11 +17,23 @@ defineProps({
     type: String,
     required: true
   },
+  id: {
+    type: String,
+    required: false
+  },
 })
+const router = useRouter()
+
+const onClick = () => {
+  if (props.id == null) {
+    return
+  }
+  router.push(`/kaminoku/${props.id}`)
+}
 </script>
 
 <template>
-  <div class="frame">
+  <div class="frame" v-on:click="onClick">
     <!-- 左からflexの子要素が配置され、俳句は右から左に書くので以下のように逆になる。 -->
     <div class="line">
       {{ third }}
@@ -30,7 +44,6 @@ defineProps({
     <div class="line">
       {{ first }}
     </div>
-
   </div>
 </template>
 
@@ -45,6 +58,7 @@ defineProps({
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
   /*アニメーションの設定*/
   transition: all .3s;
+  text-decoration: none;
 }
 
 .frame:hover {
