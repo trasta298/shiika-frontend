@@ -73,8 +73,8 @@ const onClick = () => {
     <div class="SimonokuTitle">返歌する</div>
     <div class="Container">
       <div class="LeftContainer">
-        <input class="PostTextbox" v-model="fourth" type="text" autocomplete="off" placeholder="四句">
-        <input class="PostTextbox" v-model="fifth" type="text" autocomplete="off" placeholder="結句">
+        <input class="PostTextbox" v-model="fourth" type="text" autocomplete="off" maxlength="10" placeholder="四句">
+        <input class="PostTextbox" v-model="fifth" type="text" autocomplete="off" maxlength="10" placeholder="結句">
         <button class="PostButton" type="submit" v-on:click="onClick">投稿</button>
       </div>
       <div class="RightContainer">

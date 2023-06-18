@@ -35,9 +35,9 @@ const onClick = () => {
   <Header />
   <div class="Container">
     <div class="LeftContainer">
-      <input class="PostTextbox" v-model="first" type="text" autocomplete="off" placeholder="初句">
-      <input class="PostTextbox" v-model="second" type="text" autocomplete="off" placeholder="二句">
-      <input class="PostTextbox" v-model="third" type="text" autocomplete="off" placeholder="三句">
+      <input class="PostTextbox" v-model="first" type="text" autocomplete="off" maxlength="8" placeholder="初句">
+      <input class="PostTextbox" v-model="second" type="text" autocomplete="off" maxlength="10" placeholder="二句">
+      <input class="PostTextbox" v-model="third" type="text" autocomplete="off" maxlength="8" placeholder="三句">
       <button class="PostButton" type="submit" v-on:click="onClick">投稿</button>
     </div>
     <div class="RightContainer">
