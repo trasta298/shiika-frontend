@@ -6,7 +6,7 @@ import apis, { RequestSimonoku, Tanka } from '../lib/apis'
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
-    id: String
+  id: String
 })
 
 const first = ref('')
@@ -58,6 +58,7 @@ const onClick = () => {
     const res = apis.kaminokuKaminokuIdSimonokuPost(props.id, req, { withCredentials: true })
     console.log(res)
     window.alert('投稿に成功しました')
+    router.push('/')
   } catch (e) {
     console.log(e)
     window.alert('投稿に失敗しました')
@@ -68,27 +69,41 @@ const onClick = () => {
 
 <template>
   <Header />
-  <div class="Container">
-    <div class="LeftContainer">
-      <input class="PostTextbox" v-model="fourth" type="text" autocomplete="off" placeholder="四句">
-      <input class="PostTextbox" v-model="fifth" type="text" autocomplete="off" placeholder="結句">
-      <button class="PostButton" type="submit" v-on:click="onClick">投稿</button>
-    </div>
-    <div class="RightContainer">
-      <div class="PreviewCard">
-        <TankaCard :first="first" :second="second" :third="third" :fourth="fourth" :fifth="fifth" />
+  <div class="OriginContainer">
+    <div class="SimonokuTitle">返歌する</div>
+    <div class="Container">
+      <div class="LeftContainer">
+        <input class="PostTextbox" v-model="fourth" type="text" autocomplete="off" placeholder="四句">
+        <input class="PostTextbox" v-model="fifth" type="text" autocomplete="off" placeholder="結句">
+        <button class="PostButton" type="submit" v-on:click="onClick">投稿</button>
       </div>
+      <div class="RightContainer">
+        <div class="PreviewCard">
+          <TankaCard :first="first" :second="second" :third="third" :fourth="fourth" :fifth="fifth" />
+        </div>
+      </div>
+    </div>
+    <div class="SimonokuTitle">この上の句から完成した短歌一覧</div>
+    <div class="cards">
+      <TankaCard v-for="tanka in tankas" :first="tanka.kaminoku.content.first" :second="tanka.kaminoku.content.second"
+        :third="tanka.kaminoku.content.third" :fourth="tanka.simonoku.content.fourth"
+        :fifth="tanka.simonoku.content.fifth" :key="tanka.simonoku.id"></TankaCard>
     </div>
   </div>
 </template>
 
 
 <style>
+.OriginContainer {
+  margin: 70px auto 30px;
+  max-width: 800px;
+}
+
 .Container {
   margin: 10px auto;
   max-width: 800px;
   display: flex;
-  padding-top: 100px;
+  padding-top: 20px;
 }
 
 .LeftContainer {
@@ -148,5 +163,22 @@ const onClick = () => {
   border-radius: 5px;
   border: none;
   padding: 0.7rem 2.8rem;
+}
+
+.cards {
+  display: grid;
+  /* グリッドレイアウト */
+  place-content: center;
+  /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+  grid-auto-rows: 180px;
+  grid-template-columns: repeat(auto-fill, 120px);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.SimonokuTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 </style>

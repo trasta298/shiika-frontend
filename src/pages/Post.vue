@@ -3,6 +3,9 @@ import { ref } from 'vue';
 import Header from '../components/Header.vue'
 import Card from '../components/Card.vue'
 import apis, { RequestKaminoku } from '../lib/apis'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const first = ref('')
 const second = ref('')
@@ -17,8 +20,9 @@ const onClick = () => {
         third: third.value
       }
     }
-    const res = apis.postKaminoku(req, { withCredentials: true })
-    console.log(res)
+    apis.postKaminoku(req, { withCredentials: true })
+    window.alert('投稿に成功しました')
+    router.push('/')
   } catch (e) {
     console.log(e)
     window.alert('投稿に失敗しました')
