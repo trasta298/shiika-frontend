@@ -7,7 +7,8 @@
         </router-link>
       </div>
       <div class="HeaderButton">
-        <div class="PostButton" v-on:click="onClick">投稿する</div>
+        <div class="MoveMyPage" v-on:click="onClick('/user')">マイページ</div>
+        <div class="PostButton" v-on:click="onClick('/post')">投稿する</div>
       </div>
     </div>
   </div>
@@ -19,10 +20,10 @@ import apis from '../lib/apis';
 
 const router = useRouter()
 
-const onClick = async () => {
+const onClick = async (path: string) => {
   try {
     await apis.userKaminokuGet({ withCredentials: true })
-    router.push('/post')
+    router.push(path)
   } catch (e) {
     router.push('/login')
   }
@@ -52,6 +53,14 @@ const onClick = async () => {
 .HeaderButton {
   margin-left: auto;
   margin-right: 20px;
+  display: flex;
+}
+
+.MoveMyPage {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #000;
+  padding-top: 10px;
 }
 
 .PostButton {
